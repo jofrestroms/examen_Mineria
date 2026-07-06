@@ -130,6 +130,26 @@
         .img-panel::before { content: 'VISUAL INTEL'; position: absolute; top: -12px; left: 15px; background: var(--sat-black); padding: 0 10px; font-size: 0.8rem; color: var(--mw-cyan); letter-spacing: 2px; border: 1px solid var(--mw-cyan-dim); }
         .img-panel img { max-width: 45%; height: auto; border: 1px solid var(--mw-cyan-dim); box-shadow: 0 0 20px rgba(0,240,255,0.1); transition: transform 0.3s, box-shadow 0.3s; }
         .img-panel img:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(0,240,255,0.3); border-color: var(--mw-cyan); }
+        .lightbox {
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.92);
+            justify-content: center; align-items: center; cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90vw; max-height: 90vh; object-fit: contain;
+            border: 2px solid var(--mw-cyan-dim);
+            box-shadow: 0 0 40px rgba(0,240,255,0.2);
+            cursor: default;
+        }
+        .lightbox .lb-close {
+            position: absolute; top: 20px; right: 35px;
+            color: var(--mw-cyan); font-size: 48px; font-family: 'Share Tech Mono', monospace;
+            cursor: pointer; opacity: 0.6; transition: opacity 0.2s;
+            line-height: 1;
+        }
+        .lightbox .lb-close:hover { opacity: 1; }
         .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 25px 0; }
         .info-card { background: rgba(0,0,0,0.7); border: 1px solid var(--mw-cyan-dim); padding: 25px; position: relative; transition: transform 0.3s, box-shadow 0.3s; }
         .info-card:hover { transform: translateX(10px); border-color: var(--mw-cyan); box-shadow: -5px 0 20px rgba(0,240,255,0.2); }
@@ -287,6 +307,18 @@
             }, 800);
         };
 
+        document.querySelectorAll('.img-panel img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                const lb = document.getElementById('lightbox');
+                lb.querySelector('img').src = img.src;
+                lb.classList.add('active');
+            });
+        });
     </script>
+    <div class="lightbox" id="lightbox" onclick="if(event.target===this)this.classList.remove('active')">
+        <span class="lb-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
+        <img src="" alt="full size">
+    </div>
 </body>
 </html>
