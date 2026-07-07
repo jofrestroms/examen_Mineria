@@ -707,17 +707,6 @@
         body {
             animation: crtFlicker 3s infinite;
         }
-        .music-toggle {
-            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
-            width: 44px; height: 44px; border-radius: 50%;
-            background: rgba(0,0,0,0.7); border: 1px solid var(--mw-cyan-dim);
-            color: var(--mw-cyan); font-size: 1.2rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s; font-family: 'Share Tech Mono', monospace;
-            opacity: 0.7;
-        }
-        .music-toggle:hover { opacity: 1; border-color: var(--mw-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.3); }
-        .music-toggle.muted { opacity: 0.4; color: var(--mw-gray); }
     </style>
 </head>
 
@@ -806,16 +795,6 @@
                 </div>
             </div>
 
-            <div class="section" style="animation-delay: 0.4s; text-align: center;">
-                <div class="section-title">COMENZAR MISION</div>
-                <div class="text-block">
-                    Selecciona una operación en el panel lateral para explorar cada fase del proyecto.
-                </div>
-                <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:30px;">
-                    <a href="video.html" class="cmd-btn primary" style="padding:18px 50px;font-size:1.2rem;text-decoration:none;display:inline-flex;">[ VER VIDEO ]</a>
-                </div>
-            </div>
-
             <div class="footer">
                 END OF INTEL // MINERIA DE DATOS
             </div>
@@ -861,24 +840,7 @@
             }, 800);
         };
 
-        const bgMusic = document.getElementById('bgMusic');
-        const musicBtn = document.getElementById('musicToggle');
-        bgMusic.volume = 0.5;
-        const enableAudio = () => {
-            bgMusic.muted = false;
-            bgMusic.play().catch(() => {});
-            musicBtn.classList.remove('muted');
-        };
-        document.addEventListener('click', enableAudio, { once: true });
-        musicBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            bgMusic.muted = !bgMusic.muted;
-            musicBtn.classList.toggle('muted');
-            if (!bgMusic.muted) bgMusic.play().catch(() => {});
-        });
     </script>
-    <audio id="bgMusic" src="mw.mp3" preload="auto" loop autoplay muted></audio>
-    <button class="music-toggle muted" id="musicToggle" title="Toggle music">♪</button>
 </body>
 
 </html>

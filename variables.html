@@ -172,17 +172,6 @@
         
         @keyframes crtFlicker { 0% { opacity: 0.98; } 5% { opacity: 0.90; filter: contrast(1.2); } 10% { opacity: 0.98; filter: contrast(1); } 100% { opacity: 1; } }
         body { animation: crtFlicker 3s infinite; }
-        .music-toggle {
-            position: fixed; bottom: 20px; right: 20px; z-index: 9999;
-            width: 44px; height: 44px; border-radius: 50%;
-            background: rgba(0,0,0,0.7); border: 1px solid var(--mw-cyan-dim);
-            color: var(--mw-cyan); font-size: 1.2rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s; font-family: 'Share Tech Mono', monospace;
-            opacity: 0.7;
-        }
-        .music-toggle:hover { opacity: 1; border-color: var(--mw-cyan); box-shadow: 0 0 15px rgba(0,240,255,0.3); }
-        .music-toggle.muted { opacity: 0.4; color: var(--mw-gray); }
     </style>
 </head>
 <body>
@@ -326,27 +315,10 @@
             });
         });
 
-        const bgMusic = document.getElementById('bgMusic');
-        const musicBtn = document.getElementById('musicToggle');
-        bgMusic.volume = 0.5;
-        const enableAudio = () => {
-            bgMusic.muted = false;
-            bgMusic.play().catch(() => {});
-            musicBtn.classList.remove('muted');
-        };
-        document.addEventListener('click', enableAudio, { once: true });
-        musicBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            bgMusic.muted = !bgMusic.muted;
-            musicBtn.classList.toggle('muted');
-            if (!bgMusic.muted) bgMusic.play().catch(() => {});
-        });
     </script>
     <div class="lightbox" id="lightbox" onclick="if(event.target===this)this.classList.remove('active')">
         <span class="lb-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
         <img src="" alt="full size">
     </div>
-    <audio id="bgMusic" src="mw.mp3" preload="auto" loop autoplay muted></audio>
-    <button class="music-toggle muted" id="musicToggle" title="Toggle music">♪</button>
 </body>
 </html>
