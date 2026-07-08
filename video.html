@@ -61,6 +61,30 @@
         @keyframes crtFlicker { 0% { opacity: 0.98; } 5% { opacity: 0.90; filter: contrast(1.2); } 10% { opacity: 0.98; filter: contrast(1); } 100% { opacity: 1; } }
         body { animation: crtFlicker 3s infinite; }
         .placeholder-note { font-size: 0.85rem; color: var(--mw-gray); margin-top: 10px; opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; }
+            .header-title { font-size: 1.6rem; letter-spacing: 4px; }
+            .header-status { font-size: 0.9rem; gap: 8px; }
+            .status-dot { width: 8px; height: 8px; }
+            main { padding: 30px 20px; }
+            .section { padding: 30px 20px; }
+            .section-title { font-size: 2.2rem; }
+            .text-block { font-size: 0.95rem; }
+            .cmd-btn { padding: 12px 25px; font-size: 0.9rem; }
+        }
+        @media (max-width: 480px) {
+            header { padding: 0 10px; height: 55px; }
+            .header-title { font-size: 1.2rem; letter-spacing: 2px; }
+            .header-status { font-size: 0.75rem; letter-spacing: 2px; }
+            .status-dot { width: 6px; height: 6px; }
+            main { padding: 20px 10px; }
+            .section { padding: 25px 15px; }
+            .section-title { font-size: 1.5rem; letter-spacing: 3px; }
+            .text-block { font-size: 0.85rem; }
+            .section::before, .section::after { width: 20px; height: 20px; }
+            .cmd-btn { padding: 10px 20px; font-size: 0.8rem; letter-spacing: 2px; }
+        }
     </style>
 </head>
 <body>

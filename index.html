@@ -201,6 +201,57 @@
         @keyframes terminalScan { 0% { top: -10%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 110%; opacity: 0; } }
         .blinking-cursor::after { content: '█'; animation: blink 1s infinite; margin-left: 8px; color: var(--mw-white); }
         .mw-text { display: inline-block; white-space: pre; }
+
+        @media (max-width: 1024px) {
+            .op-card { width: 200px; }
+            .op-name { font-size: 2rem; }
+            .mission-title { font-size: 10vw; }
+            .command-console { padding: 0 3vw; }
+            .console-title { font-size: 1.4rem; }
+            .auth-terminal { width: 90%; padding: 40px 30px; }
+            .hud-data { font-size: 0.7rem; }
+            .hud-data.tl { left: 20px; }
+            .hud-data.bl { left: 20px; }
+            .hud-data.tr { right: 20px; }
+            .hud-data.br { right: 20px; }
+        }
+        @media (max-width: 768px) {
+            .ops-container { flex-wrap: wrap; gap: 15px; bottom: 15vh; padding: 0 20px; }
+            .op-card { width: 45%; padding-left: 10px; }
+            .op-name { font-size: 1.6rem; }
+            .mission-title-container { height: 20vw; }
+            .mission-title { font-size: 8vw; }
+            .sub-details { font-size: 1.2rem; letter-spacing: 3px; }
+            .command-console { flex-direction: column; height: auto; padding: 15px 20px; gap: 10px; }
+            .console-info { text-align: center; }
+            .console-title { font-size: 1.2rem; }
+            .console-actions { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .cmd-btn { padding: 10px 20px; font-size: 0.85rem; }
+            .header-title { font-size: 1.8rem; letter-spacing: 4px; }
+            header { padding: 0 20px; }
+            .top-status { font-size: 0.65rem; letter-spacing: 3px; }
+            .hud-data { display: none; }
+            .auth-terminal { padding: 30px 20px; }
+            .auth-logo { font-size: 2.5rem; letter-spacing: 5px; }
+            .btn-auth { padding: 12px 30px; font-size: 0.9rem; }
+            .drone-crosshair { width: 80vw; height: 80vw; }
+        }
+        @media (max-width: 480px) {
+            .ops-container { bottom: 18vh; gap: 10px; }
+            .op-card { width: 100%; }
+            .op-role { font-size: 0.65rem; }
+            .op-name { font-size: 1.4rem; }
+            .mission-title { font-size: 10vw; letter-spacing: 0; }
+            .sub-details { font-size: 1rem; }
+            .command-console { padding: 12px 15px; }
+            .console-title { font-size: 1rem; }
+            .console-sub { font-size: 0.7rem; }
+            .auth-logo { font-size: 1.8rem; }
+            .auth-sub { font-size: 0.75rem; }
+            header { flex-wrap: wrap; height: auto; padding: 10px 15px; gap: 5px; }
+            .header-title { font-size: 1.3rem; }
+            .header-status { font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
